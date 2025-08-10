@@ -2,3 +2,10 @@
 example/
 deploy/
 src/
+
+
+.dockerignore
+.prettierrc
+tsconfig.json
+README.md
+CONTRIBUTING.md
