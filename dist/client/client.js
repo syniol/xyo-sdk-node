@@ -6,7 +6,6 @@ var Client = /** @class */ (function () {
         this.clientConfig = clientConfig;
     }
     Client.prototype.health = function () {
-        console.log('Health triggered');
         return undefined;
     };
     return Client;
