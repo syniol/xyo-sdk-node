@@ -1,4 +1,4 @@
-name: Publish package to NPM/Yarn Packages
+name: Publish package
 
 on:
   push:
