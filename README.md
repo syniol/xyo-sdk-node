@@ -10,21 +10,34 @@ First you need to install the XYO SDK for node.js ecosystem via npm or yarn pack
 
 __NPM__:
 ```shell
-npm i xyo-sdk-node
+npm i xyo-sdk
 ```
 
 __YARN__:
 ```shell
-yarn add xyo-sdk-node
+yarn add xyo-sdk
 ```
 
 In order to utilise Enrichment service, you need to create a XYO Client. Please see the example below:
 
+__ES5 Example__
 ```js
-const xyo = require('xyo-sdk-node');
+const xyo = require('xyo-sdk');
 
 (async () => {
   const client = new xyo.Client({ APIKey: "hgdhjagsdfhqwgfey23te1iuey1ewqioeqwe/32131236721edghjsadjgasfdh"})
+
+  console.log("Example test for XYO SDK")
+  console.log("Health", client.health())
+})()
+```
+
+__ES6+ and TypeScript Example__
+```js
+import { Client } from 'xyo-sdk'
+
+(async () => {
+  const client = new Client({ APIKey: "hgdhjagsdfhqwgfey23te1iuey1ewqioeqwe/32131236721edghjsadjgasfdh"})
 
   console.log("Example test for XYO SDK")
   console.log("Health", client.health())
