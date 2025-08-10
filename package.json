@@ -1,5 +1,5 @@
 {
-  "name": "xyo-sdk-node",
+  "name": "xyo-sdk",
   "version": "0.1.0",
   "description": "XYO SDK to connect and consume AI Banking Transaction Enrichment",
   "main": "dist/index.js",
