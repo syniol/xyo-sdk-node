@@ -1,0 +1,34 @@
+{
+  "name": "xyo-sdk-node",
+  "version": "0.1.0",
+  "description": "XYO SDK to connect and consume AI Banking Transaction Enrichment",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/syniol/xyo-sdk-node.git"
+  },
+  "keywords": [
+    "XYO",
+    "Financial",
+    "SDK",
+    "AI",
+    "Banking",
+    "Transaction",
+    "Enrichment"
+  ],
+  "author": "Hadi Tajallaei <hadi@syniol.com>",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/syniol/xyo-sdk-node/issues"
+  },
+  "homepage": "https://github.com/syniol/xyo-sdk-node#readme",
+  "devDependencies": {
+    "@types/node": "24.2.1",
+    "prettier": "3.6.2",
+    "typescript": "5.9.2"
+  }
+}
