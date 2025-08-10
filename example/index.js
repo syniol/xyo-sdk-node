@@ -1,4 +1,4 @@
-const xyo = require('mydsdsad');
+const xyo = require('xyo-sdk');
 
 (async () => {
   const client = new xyo.Client({ APIKey: "dasdsadsdsadsadas"})
