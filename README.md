@@ -1,4 +1,35 @@
 # XYO Financial SDK (Node.js)
+![workflow](https://github.com/syniol/xyo-sdk-node/actions/workflows/makefile.yml/badge.svg)
+
+This is an official SDK maintained by Syniol Limited. This could be used for Trial and Premium accounts with a valid 
+API key to connect and consume the Enrichment services.
+
+
+## Quick Guide
+First you need to install the XYO SDK for node.js ecosystem via npm or yarn package management.
+
+__NPM__:
+```shell
+npm i xyo-sdk-node
+```
+
+__YARN__:
+```shell
+yarn add xyo-sdk-node
+```
+
+In order to utilise Enrichment service, you need to create a XYO Client. Please see the example below:
+
+```js
+const xyo = require('xyo-sdk-node');
+
+(async () => {
+  const client = new xyo.Client({ APIKey: "hgdhjagsdfhqwgfey23te1iuey1ewqioeqwe/32131236721edghjsadjgasfdh"})
+
+  console.log("Example test for XYO SDK")
+  console.log("Health", client.health())
+})()
+```
 
 
 #### Credits
