@@ -2,9 +2,12 @@
   "name": "xyo-sdk-node",
   "version": "0.1.0",
   "description": "XYO SDK to connect and consume AI Banking Transaction Enrichment",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "rm -rf ./dist && tsc",
+    "prestart": "rm -rf ./dist && tsc",
+    "start": "cd example; npm i; npm start;cd ..;",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
