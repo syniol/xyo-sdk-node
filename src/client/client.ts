@@ -1,9 +1,11 @@
-import { ClientConfig } from './config'
+import { HttpStatusCode, Request, CarbonHttpRequestOption } from 'carbon-http'
 
-import { HttpStatusCode, Request } from 'carbon-http'
+import { ClientConfig } from './config'
+import { CarbonHttpResponse } from 'carbon-http/dist/types/http/type'
+
 
 export class Client {
-  private readonly httpRequest: <Opt, Resp>(ur: string, opt: Opt) => Promise<Resp>
+  private readonly httpRequest: <T>(ur: string, opt: CarbonHttpRequestOption) => Promise<CarbonHttpResponse<T>>
 
   public constructor(
     private readonly clientConfig: ClientConfig,
