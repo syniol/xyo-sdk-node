@@ -16,6 +16,10 @@ export interface EnrichTransactionCollectionResponse  {
   link: string
 }
 
+export interface EnrichTransactionCollectionStatusResponse  {
+  status: EnrichmentCollectionStatus
+}
+
 export enum EnrichmentCollectionStatus {
   EnrichmentCollectionStatusReady   = "READY",
   EnrichmentCollectionStatusFailure = "FAILED",
@@ -23,7 +27,7 @@ export enum EnrichmentCollectionStatus {
 }
 
 export interface Enrichment {
-  enrichTransaction(request: EnrichmentRequest): EnrichmentResponse
-  enrichTransactionCollection(request: EnrichmentRequest[]): EnrichTransactionCollectionResponse
-  enrichTransactionCollectionStatus(id: string): EnrichmentCollectionStatus
+  enrichTransaction(request: EnrichmentRequest): Promise<EnrichmentResponse>
+  enrichTransactionCollection(request: EnrichmentRequest[]): Promise<EnrichTransactionCollectionResponse>
+  enrichTransactionCollectionStatus(id: string): Promise<EnrichmentCollectionStatus>
 }
