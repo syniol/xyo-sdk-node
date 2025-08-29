@@ -1,6 +1,10 @@
 # XYO Financial SDK (Node.js)
 ![workflow](https://github.com/syniol/xyo-sdk-node/actions/workflows/makefile.yml/badge.svg)    ![workflow](https://github.com/syniol/xyo-sdk-node/actions/workflows/npm_publish.yml/badge.svg)
 
+<p align="center">
+    <a href="https://xyo.financial" target="blank"><img alt="node.js (Turtle) Mascot" width="50%" src="https://github.com/syniol/xyo-sdk-node/blob/main/docs/mascot.png?raw=true" /></a>
+</p>
+
 This is an official SDK maintained by Syniol Limited. This could be used for Trial and Premium accounts with a valid 
 API key to connect and consume the Enrichment services.
 
