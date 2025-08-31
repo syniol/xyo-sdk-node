@@ -38,10 +38,10 @@ const xyo = require('xyo-sdk');
 
 __ES6+ and TypeScript Example__
 ```js
-import { Client } from 'xyo-sdk'
+import { Client, ClientConfig } from 'xyo-sdk'
 
 (async () => {
-  const client = new Client({ APIKey: "hgdhjagsdfhqwgfey23te1iuey1ewqioeqwe/32131236721edghjsadjgasfdh"})
+  const client = new Client(new ClientConfig('hgdhjagsdfhqwgfey23te1iuey1ewqioeqwe/32131236721edghjsadjgasfdh'))
 
   console.log("Example test for XYO SDK")
   console.log("Health", client.health())
