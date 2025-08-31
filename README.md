@@ -29,7 +29,7 @@ __ES5 Example__
 const xyo = require('xyo-sdk');
 
 (async () => {
-  const client = new xyo.Client({ APIKey: "hgdhjagsdfhqwgfey23te1iuey1ewqioeqwe/32131236721edghjsadjgasfdh"})
+  const client = new xyo.Client(new xyo.ClientConfig("YourAPIKeyFromXYO.FinancialDashboard"))
 
   console.log("Example test for XYO SDK")
   console.log("Health", client.health())

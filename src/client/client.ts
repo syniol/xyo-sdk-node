@@ -7,69 +7,27 @@ import {
   EnrichmentRequest,
   EnrichmentResponse,
   EnrichTransactionCollectionResponse, EnrichTransactionCollectionStatusResponse,
-} from './enrichment'
+} from '../enrichment/enrichment'
+import { EnrichmentService } from '../enrichment/service'
 
 export class Client implements Enrichment {
+  private readonly enrichment: Enrichment
+
   public constructor(
     private readonly clientConfig: ClientConfig,
   ) {
+    this.enrichment = new EnrichmentService(clientConfig)
   }
 
   public async enrichTransaction(request: EnrichmentRequest): Promise<EnrichmentResponse> {
-    const resp = await Request<EnrichmentResponse>(
-      'https://api.xyo.financial/v1/ai/finance/enrichment/transaction',
-      {
-        method: HttpMethod.POST,
-        headers: this.requiredHeaders,
-        body: JSON.stringify(request),
-      }
-    )
-
-    if (resp.status !== HttpStatusCode.OK) {
-      throw new Error('')
-    }
-
-    return resp.json()
+    return this.enrichment.enrichTransaction(request)
   }
 
   public async enrichTransactionCollection(request: EnrichmentRequest[]): Promise<EnrichTransactionCollectionResponse> {
-    const resp = await Request<EnrichTransactionCollectionResponse>(
-      'https://api.xyo.financial/v1/ai/finance/enrichment/transactions',
-      {
-        method: HttpMethod.POST,
-        headers: this.requiredHeaders,
-        body: JSON.stringify(request),
-      }
-    )
-
-    if (resp.status !== HttpStatusCode.OK) {
-      throw new Error('')
-    }
-
-    return resp.json()
+    return this.enrichment.enrichTransactionCollection(request)
   }
 
   public async enrichTransactionCollectionStatus(id: string): Promise<EnrichmentCollectionStatus> {
-    const resp = await Request<EnrichTransactionCollectionStatusResponse>(
-      `https://api.xyo.financial/v1/ai/finance/enrichment/transactions/status/${id}`,
-      {
-        method: HttpMethod.GET,
-        headers: this.requiredHeaders,
-      }
-    )
-
-    if (resp.status !== HttpStatusCode.OK) {
-      throw new Error('')
-    }
-
-    return resp.json().status
-  }
-
-  private get requiredHeaders(): Record<string, string> {
-    return {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'Authorization': `Bearer ${this.clientConfig.APIKey}`
-    }
+    return this.enrichment.enrichTransactionCollectionStatus(id)
   }
 }

@@ -1,9 +1,19 @@
 import { CarbonHttpRequestOption, CarbonHttpResponse, Request } from 'carbon-http'
 
 export class ClientConfig {
-  private readonly httpRequest: <T>(ur: string, opt: CarbonHttpRequestOption) => Promise<CarbonHttpResponse<T>>
+  public static readonly BASE_URL = 'https://api.xyo.financial'
 
-  public constructor(private readonly apiKey: string) {
+  public readonly httpRequest: <T>(ur: string, opt: CarbonHttpRequestOption) => Promise<CarbonHttpResponse<T>>
+
+  public constructor(public readonly apiKey: string) {
     this.httpRequest = Request
+  }
+
+  public get requiredHeaders(): Record<string, string> {
+    return {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `Bearer ${this.apiKey}`
+    }
   }
 }
