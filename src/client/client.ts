@@ -1,12 +1,10 @@
-import { CarbonHttpRequestOption, CarbonHttpResponse, HttpMethod, HttpStatusCode, Request } from 'carbon-http'
-
 import { ClientConfig } from './config'
 import {
   Enrichment,
   EnrichmentCollectionStatus,
   EnrichmentRequest,
   EnrichmentResponse,
-  EnrichTransactionCollectionResponse, EnrichTransactionCollectionStatusResponse,
+  EnrichTransactionCollectionResponse,
 } from '../enrichment/enrichment'
 import { EnrichmentService } from '../enrichment/service'
 
@@ -19,11 +17,15 @@ export class Client implements Enrichment {
     this.enrichment = new EnrichmentService(clientConfig)
   }
 
-  public async enrichTransaction(request: EnrichmentRequest): Promise<EnrichmentResponse> {
+  public async enrichTransaction(
+    request: EnrichmentRequest,
+  ): Promise<EnrichmentResponse> {
     return this.enrichment.enrichTransaction(request)
   }
 
-  public async enrichTransactionCollection(request: EnrichmentRequest[]): Promise<EnrichTransactionCollectionResponse> {
+  public async enrichTransactionCollection(
+    request: EnrichmentRequest[],
+  ): Promise<EnrichTransactionCollectionResponse> {
     return this.enrichment.enrichTransactionCollection(request)
   }
 

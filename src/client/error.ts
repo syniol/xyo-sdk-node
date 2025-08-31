@@ -6,4 +6,8 @@ export class ClientError extends Error {
 
     this.statusCode = code;
   }
+
+  public static NewErrorFromHttpResponse(content: string, code: number): ClientError {
+    return new ClientError(content, code);
+  }
 }

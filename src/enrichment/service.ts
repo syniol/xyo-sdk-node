@@ -1,3 +1,5 @@
+import { HttpMethod, HttpStatusCode } from 'carbon-http'
+
 import {
   Enrichment,
   EnrichmentCollectionStatus,
@@ -6,7 +8,7 @@ import {
   EnrichTransactionCollectionResponse, EnrichTransactionCollectionStatusResponse,
 } from './enrichment'
 import { ClientConfig } from '../client/config'
-import { HttpMethod, HttpStatusCode } from 'carbon-http'
+import { ClientError } from '../client/error'
 
 export class EnrichmentService implements Enrichment {
   public constructor(private clientConfig: ClientConfig) {
@@ -23,7 +25,7 @@ export class EnrichmentService implements Enrichment {
     )
 
     if (resp.status !== HttpStatusCode.OK) {
-      throw new Error('')
+      throw ClientError.NewErrorFromHttpResponse(resp.text(), resp.status)
     }
 
     return resp.json()
@@ -40,7 +42,7 @@ export class EnrichmentService implements Enrichment {
     )
 
     if (resp.status !== HttpStatusCode.OK) {
-      throw new Error('')
+      throw ClientError.NewErrorFromHttpResponse(resp.text(), resp.status)
     }
 
     return resp.json()
@@ -56,7 +58,7 @@ export class EnrichmentService implements Enrichment {
     )
 
     if (resp.status !== HttpStatusCode.OK) {
-      throw new Error('')
+      throw ClientError.NewErrorFromHttpResponse(resp.text(), resp.status)
     }
 
     return resp.json().status

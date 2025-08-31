@@ -1,4 +1,3 @@
-
 export interface EnrichmentRequest {
   content:     string
   countryCode: string
