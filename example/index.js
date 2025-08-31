@@ -1,4 +1,4 @@
-const xyo = require('xyo-sdk');
+const xyo = require('xyo-sdk-local');
 
 (async () => {
   new xyo.Client(new xyo.ClientConfig('ApiKeyFromXYO.FinancialDashboard'))
