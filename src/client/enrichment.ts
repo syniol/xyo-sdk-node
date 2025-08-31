@@ -22,7 +22,7 @@ export interface EnrichTransactionCollectionStatusResponse  {
 
 export enum EnrichmentCollectionStatus {
   EnrichmentCollectionStatusReady   = "READY",
-  EnrichmentCollectionStatusFailure = "FAILED",
+  EnrichmentCollectionStatusFailed = "FAILED",
   EnrichmentCollectionStatusPending = "PENDING",
 }
 

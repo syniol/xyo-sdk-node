@@ -9,20 +9,10 @@ import {
   EnrichTransactionCollectionResponse, EnrichTransactionCollectionStatusResponse,
 } from './enrichment'
 
-
 export class Client implements Enrichment {
-  private readonly httpRequest: <T>(ur: string, opt: CarbonHttpRequestOption) => Promise<CarbonHttpResponse<T>>
-
   public constructor(
     private readonly clientConfig: ClientConfig,
   ) {
-    this.httpRequest = Request
-  }
-
-  public async health(): Promise<boolean> {
-    const res = await Request('https://api.xyo.financial/healthz')
-
-    return res.status === HttpStatusCode.OK
   }
 
   public async enrichTransaction(request: EnrichmentRequest): Promise<EnrichmentResponse> {
