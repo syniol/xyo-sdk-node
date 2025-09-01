@@ -40,6 +40,9 @@
     "verbatimModuleSyntax": false,
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
-    "moduleDetection": "force",
-  }
+    "moduleDetection": "force"
+  },
+  "include": [
+    "src/**/*",
+  ]
 }
