@@ -1,4 +1,5 @@
 import { suite, test } from 'node:test'
+
 void (async () => {
   await suite('Enrichment Test', async () => {
     await test('It should do positive', (t) => {
