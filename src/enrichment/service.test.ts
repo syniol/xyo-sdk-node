@@ -1,5 +1,5 @@
 import { suite, test } from 'node:test'
-;(async () => {
+void (async () => {
   await suite('Enrichment Test', async () => {
     await test('It should do positive', (t) => {
       t.assert.equal('1', '1')
