@@ -17,7 +17,9 @@ export class ClientConfig {
     opt: CarbonHttpRequestOption,
   ) => Promise<CarbonHttpResponse<T>>
 
-  public constructor(public readonly options: ClientConfigOptions) {
+  public constructor(
+    public readonly options: ClientConfigOptions,
+  ) {
     this.httpRequest = Request
   }
 
