@@ -1,13 +1,112 @@
-import { suite, test } from 'node:test'
+import { describe, suite, test } from 'node:test'
+import {
+  CarbonHttpResponse,
+  HttpStatusCode,
+} from 'carbon-http'
+import { EnrichmentService } from './service'
+import { ClientConfig } from '../client/config'
+import { EnrichmentResponse } from './enrichment'
 
 void (async () => {
-  await suite('Enrichment Test', async () => {
-    await test('It should do positive', (t) => {
-      t.assert.equal('1', '1')
-    })
+  await suite('Enrichment Suite', async () => {
+    await describe('Test enrichTransaction', async () => {
+      await test('when status code is 200', async (t) => {
+        const mockedEnrichmentResponse: EnrichmentResponse =
+          {
+            merchant: 'Syniol Limited',
+            description:
+              'Cloud Software and Platform Consultancy',
+            categories: ['Cloud', 'Tech'],
+            logo: 'base64/png;eyutuidbavdqgfmfnbamdnsdsadasdfc',
+          }
 
-    await test('It should do negative', (t) => {
-      t.assert.notEqual('2', '1')
+        const mockedClientConfig: ClientConfig = {
+          options: {
+            apiKey: 'YourApiKeyFromXYO.FinancialDashboard',
+          },
+          get requiredHeaders(): Record<string, string> {
+            return {
+              Authorization: `Bearer ${this.options.apiKey}`,
+            }
+          },
+          httpRequest: (): Promise<
+            CarbonHttpResponse<EnrichmentResponse>
+          > => {
+            const mockedHttpRequestResponse = {
+              status: HttpStatusCode.OK,
+              text(): string {
+                return JSON.stringify(
+                  mockedEnrichmentResponse,
+                )
+              },
+              json(): EnrichmentResponse {
+                return mockedEnrichmentResponse
+              },
+            } as CarbonHttpResponse<EnrichmentResponse>
+
+            return Promise.resolve(
+              mockedHttpRequestResponse,
+            )
+          },
+        }
+
+        const sut = new EnrichmentService(
+          mockedClientConfig,
+        )
+        const actual = await sut.enrichTransaction({
+          content: 'Syniol Software Consultancy',
+          countryCode: 'GB',
+        })
+
+        t.assert.deepEqual(actual, mockedEnrichmentResponse)
+      })
+
+      await test('when status code is not 200', async (t) => {
+        const mockedClientConfig: ClientConfig = {
+          options: {
+            apiKey: 'YourApiKeyFromXYO.FinancialDashboard',
+          },
+          get requiredHeaders(): Record<string, string> {
+            return {
+              Authorization: `Bearer ${this.options.apiKey}`,
+            }
+          },
+          httpRequest: (): Promise<
+            CarbonHttpResponse<EnrichmentResponse>
+          > => {
+            const mockedHttpRequestResponse = {
+              status: HttpStatusCode.BAD_REQUEST,
+              text(): string {
+                return 'error with the request'
+              },
+            } as CarbonHttpResponse<EnrichmentResponse>
+
+            return Promise.resolve(
+              mockedHttpRequestResponse,
+            )
+          },
+        }
+
+        const sut = new EnrichmentService(
+          mockedClientConfig,
+        )
+
+        try {
+          await sut.enrichTransaction({
+            content: 'Syniol Software Consultancy',
+            countryCode: 'GB',
+          })
+        } catch (e) {
+          t.assert.equal(
+            e.statusCode,
+            HttpStatusCode.BAD_REQUEST,
+          )
+          t.assert.equal(
+            e.message,
+            'error with the request',
+          )
+        }
+      })
     })
   })
 })()

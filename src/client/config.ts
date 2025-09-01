@@ -13,7 +13,7 @@ export class ClientConfig {
     'https://api.xyo.financial'
 
   public readonly httpRequest: <T>(
-    ur: string,
+    url: string,
     opt: CarbonHttpRequestOption,
   ) => Promise<CarbonHttpResponse<T>>
 
