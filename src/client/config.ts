@@ -4,6 +4,10 @@ import {
   Request,
 } from 'carbon-http'
 
+export type ClientConfigOptions = {
+  apiKey: string
+}
+
 export class ClientConfig {
   public static readonly BASE_URL =
     'https://api.xyo.financial'
@@ -13,7 +17,7 @@ export class ClientConfig {
     opt: CarbonHttpRequestOption,
   ) => Promise<CarbonHttpResponse<T>>
 
-  public constructor(public readonly apiKey: string) {
+  public constructor(public readonly options: ClientConfigOptions) {
     this.httpRequest = Request
   }
 
@@ -21,7 +25,7 @@ export class ClientConfig {
     return {
       'Content-Type': 'application/json',
       Accept: 'application/json',
-      Authorization: `Bearer ${this.apiKey}`,
+      Authorization: `Bearer ${this.options.apiKey}`,
     }
   }
 }
