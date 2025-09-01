@@ -4,7 +4,7 @@ import {
   Request,
 } from 'carbon-http'
 
-export type ClientConfigOptions = {
+export interface ClientConfigOptions {
   apiKey: string
 }
 
