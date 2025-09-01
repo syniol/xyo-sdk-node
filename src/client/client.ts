@@ -26,10 +26,16 @@ export class Client implements Enrichment {
   public async enrichTransactionCollection(
     request: EnrichmentRequest[],
   ): Promise<EnrichTransactionCollectionResponse> {
-    return this.enrichment.enrichTransactionCollection(request)
+    return this.enrichment.enrichTransactionCollection(
+      request,
+    )
   }
 
-  public async enrichTransactionCollectionStatus(id: string): Promise<EnrichmentCollectionStatus> {
-    return this.enrichment.enrichTransactionCollectionStatus(id)
+  public async enrichTransactionCollectionStatus(
+    id: string,
+  ): Promise<EnrichmentCollectionStatus> {
+    return this.enrichment.enrichTransactionCollectionStatus(
+      id,
+    )
   }
 }
