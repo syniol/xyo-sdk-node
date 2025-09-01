@@ -19,7 +19,6 @@
 
     // Other Outputs
     "declaration": true,
-    "declarationMap": true,
     "inlineSourceMap": true,
 
     // Stricter Typechecking Options
