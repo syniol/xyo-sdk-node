@@ -18,9 +18,9 @@
      "types": ["node"],
 
     // Other Outputs
-    "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
+    "inlineSourceMap": true,
 
     // Stricter Typechecking Options
     "noUncheckedIndexedAccess": true,
