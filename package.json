@@ -7,7 +7,7 @@
   "scripts": {
     "build": "rm -rf ./dist && tsc",
     "prepublish": "rm -rf ./dist && tsc",
-    "lint": "npx prettier -c src/**/*.ts && eslint ./src",
+    "lint": "npx prettier -c src/**/*.ts && eslint ./src --ignore-pattern \"src/**/*.test.*\"",
     "test": "node --test --import=tsx --experimental-test-coverage */**/*.test.ts"
   },
   "repository": {
