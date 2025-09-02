@@ -1,0 +1,38 @@
+export interface EnrichmentRequest {
+  content: string
+  countryCode: string
+}
+
+export interface EnrichmentResponse {
+  merchant: string
+  description: string
+  categories: string[]
+  logo: string
+}
+
+export interface EnrichTransactionCollectionResponse {
+  id: string
+  link: string
+}
+
+export interface EnrichTransactionCollectionStatusResponse {
+  status: EnrichmentCollectionStatus
+}
+
+export enum EnrichmentCollectionStatus {
+  EnrichmentCollectionStatusReady = 'READY',
+  EnrichmentCollectionStatusFailed = 'FAILED',
+  EnrichmentCollectionStatusPending = 'PENDING',
+}
+
+export interface Enrichment {
+  enrichTransaction(
+    request: EnrichmentRequest,
+  ): Promise<EnrichmentResponse>
+  enrichTransactionCollection(
+    request: EnrichmentRequest[],
+  ): Promise<EnrichTransactionCollectionResponse>
+  enrichTransactionCollectionStatus(
+    id: string,
+  ): Promise<EnrichmentCollectionStatus>
+}

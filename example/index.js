@@ -1,8 +1,7 @@
-const xyo = require('xyo-sdk');
+const xyo = require('xyo-sdk-local');
 
 (async () => {
-  const client = new xyo.Client({ APIKey: "dasdsadsdsadsadas"})
+  new xyo.Client(new xyo.ClientConfig({ apiKey: 'ApiKeyFromXYO.FinancialDashboard' }))
 
   console.log("Example test for XYO SDK")
-  console.log("Health", client.health())
 })()

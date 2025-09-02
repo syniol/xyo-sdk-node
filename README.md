@@ -29,22 +29,20 @@ __ES5 Example__
 const xyo = require('xyo-sdk');
 
 (async () => {
-  const client = new xyo.Client({ APIKey: "hgdhjagsdfhqwgfey23te1iuey1ewqioeqwe/32131236721edghjsadjgasfdh"})
+  const client = new xyo.Client(new xyo.ClientConfig({ apiKey: 'YourAPIKeyFromXYO.FinancialDashboard' }))
 
   console.log("Example test for XYO SDK")
-  console.log("Health", client.health())
 })()
 ```
 
 __ES6+ and TypeScript Example__
 ```js
-import { Client } from 'xyo-sdk'
+import { Client, ClientConfig } from 'xyo-sdk'
 
 (async () => {
-  const client = new Client({ APIKey: "hgdhjagsdfhqwgfey23te1iuey1ewqioeqwe/32131236721edghjsadjgasfdh"})
+  const client = new Client(new ClientConfig({ apiKey: 'YourAPIKeyFromXYO.FinancialDashboard' }))
 
   console.log("Example test for XYO SDK")
-  console.log("Health", client.health())
 })()
 ```
 

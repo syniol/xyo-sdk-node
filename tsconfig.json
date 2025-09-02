@@ -18,9 +18,8 @@
      "types": ["node"],
 
     // Other Outputs
-    "sourceMap": true,
     "declaration": true,
-    "declarationMap": true,
+    "inlineSourceMap": true,
 
     // Stricter Typechecking Options
     "noUncheckedIndexedAccess": true,
@@ -40,6 +39,13 @@
     "verbatimModuleSyntax": false,
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
-    "moduleDetection": "force",
-  }
+    "moduleDetection": "force"
+  },
+  "include": [
+    "src/**/*",
+  ],
+  "exclude": [
+    "node_modules",
+    "src/**/*.test.ts",
+  ]
 }
