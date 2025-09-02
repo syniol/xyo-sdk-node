@@ -5,12 +5,13 @@
     <a href="https://xyo.financial" target="blank"><img alt="node.js (Turtle) Mascot" width="50%" src="https://github.com/syniol/xyo-sdk-node/blob/main/docs/mascot.png?raw=true" /></a>
 </p>
 
-This is an official SDK maintained by Syniol Limited. This could be used for Trial and Premium accounts with a valid 
-API key to connect and consume the Enrichment services.
+This SDK is officially maintained by [Syniol Limited](https://syniol.com). It can be utilised for Trial and 
+Premium accounts, given that a valid API key is available to connect to and access the 
+Enrichment services.
 
 
 ## Quickstart Guide
-First you need to install the XYO SDK for node.js ecosystem via [npm](https://npmjs.com) or [yarn](https://yarnpkg.com) package management.
+First you need to install the XYO SDK for node.js ecosystem via [npm](https://www.npmjs.com/package/xyo-sdk) or [yarn](https://yarnpkg.com/package/xyo-sdk) package management.
 
 __NPM__:
 ```shell
@@ -51,6 +52,8 @@ const enrichedTransaction = client.enrichTransaction({
 
 console.log(enrichedTransaction.merchant)
 console.log(enrichedTransaction.description)
+console.log(enrichedTransaction.categories)
+console.log(enrichedTransaction.logo)
 ```
 
 __Enrich Payment Transaction Collection _(Bulk Enrichment)___:
