@@ -10,7 +10,7 @@
   "license": "ISC",
   "description": "Example app to test the SDK Library before publication and inside the Docker during CI/CD",
   "dependencies": {
-    "xyo-sdk-local": "./../dist",
-    "xyo-sdk": "^0.1.6"
+    "xyo-sdk": "^0.2.0",
+    "xyo-sdk-local": "./../dist"
   }
 }
