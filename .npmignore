@@ -8,6 +8,8 @@ docs/
 .prettierrc
 .gitignore
 tsconfig.json
+eslint.config.mts
 package-lock.json
 README.md
 CONTRIBUTING.md
+LICENSE
