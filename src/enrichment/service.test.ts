@@ -11,6 +11,7 @@ import {
   EnrichTransactionCollectionResponse,
   EnrichTransactionCollectionStatusResponse,
 } from './enrichment'
+import { ClientError } from '../client/error'
 
 void (async () => {
   await suite('Enrichment Suite', async () => {
@@ -112,6 +113,37 @@ void (async () => {
           )
         }
       })
+
+      await test('when there is an unexpected error querying the API via HTTP protocol', async (t) => {
+        const mockedClientConfig: ClientConfig = {
+          options: {
+            apiKey: 'YourApiKeyFromXYO.FinancialDashboard',
+          },
+          get requiredHeaders(): Record<string, string> {
+            return {
+              Authorization: `Bearer ${this.options.apiKey}`,
+            }
+          },
+          httpRequest: (): Promise<
+            CarbonHttpResponse<EnrichmentResponse>
+          > => {
+            throw new ClientError('Mocked Error')
+          },
+        }
+
+        const sut = new EnrichmentService(
+          mockedClientConfig,
+        )
+
+        try {
+          await sut.enrichTransaction({
+            content: 'Syniol Software Consultancy',
+            countryCode: 'GB',
+          })
+        } catch (e) {
+          t.assert.equal(e.message, 'Mocked Error')
+        }
+      })
     })
 
     await describe('Test enrichTransactionCollection', async () => {
@@ -211,6 +243,39 @@ void (async () => {
           )
         }
       })
+
+      await test('when there is an unexpected error querying the API via HTTP protocol', async (t) => {
+        const mockedClientConfig: ClientConfig = {
+          options: {
+            apiKey: 'YourApiKeyFromXYO.FinancialDashboard',
+          },
+          get requiredHeaders(): Record<string, string> {
+            return {
+              Authorization: `Bearer ${this.options.apiKey}`,
+            }
+          },
+          httpRequest: (): Promise<
+            CarbonHttpResponse<EnrichTransactionCollectionResponse>
+          > => {
+            throw new ClientError('Mocked Error')
+          },
+        }
+
+        const sut = new EnrichmentService(
+          mockedClientConfig,
+        )
+
+        try {
+          await sut.enrichTransactionCollection([
+            {
+              content: 'Syniol Software Consultancy',
+              countryCode: 'GB',
+            },
+          ])
+        } catch (e) {
+          t.assert.equal(e.message, 'Mocked Error')
+        }
+      })
     })
 
     await describe('Test enrichTransactionCollectionStatus', async () => {
@@ -308,6 +373,36 @@ void (async () => {
             e.message,
             'error with the request',
           )
+        }
+      })
+
+      await test('when there is an unexpected error querying the API via HTTP protocol', async (t) => {
+        const mockedClientConfig: ClientConfig = {
+          options: {
+            apiKey: 'YourApiKeyFromXYO.FinancialDashboard',
+          },
+          get requiredHeaders(): Record<string, string> {
+            return {
+              Authorization: `Bearer ${this.options.apiKey}`,
+            }
+          },
+          httpRequest: (): Promise<
+            CarbonHttpResponse<EnrichTransactionCollectionStatusResponse>
+          > => {
+            throw new ClientError('Mocked Error')
+          },
+        }
+
+        const sut = new EnrichmentService(
+          mockedClientConfig,
+        )
+
+        try {
+          await sut.enrichTransactionCollectionStatus(
+            '6dd29d66-2326-40bb-b3e9-2b45f2dcf517',
+          )
+        } catch (e) {
+          t.assert.equal(e.message, 'Mocked Error')
         }
       })
     })
