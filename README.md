@@ -9,8 +9,8 @@ This is an official SDK maintained by Syniol Limited. This could be used for Tri
 API key to connect and consume the Enrichment services.
 
 
-## Quick Guide
-First you need to install the XYO SDK for node.js ecosystem via npm or yarn package management.
+## Quickstart Guide
+First you need to install the XYO SDK for node.js ecosystem via [npm](https://npmjs.com) or [yarn](https://yarnpkg.com) package management.
 
 __NPM__:
 ```shell
@@ -22,7 +22,7 @@ __YARN__:
 yarn add xyo-sdk
 ```
 
-In order to utilise Enrichment service, you need to create a XYO Client. Please see the example below:
+Client is an entry point to use the SDK. You need a valid API Key obtainable from https://xyo.financial/dashboard
 
 __ES5 Example__
 ```js
@@ -30,8 +30,6 @@ const xyo = require('xyo-sdk');
 
 (async () => {
   const client = new xyo.Client(new xyo.ClientConfig({ apiKey: 'YourAPIKeyFromXYO.FinancialDashboard' }))
-
-  console.log("Example test for XYO SDK")
 })()
 ```
 
@@ -41,9 +39,42 @@ import { Client, ClientConfig } from 'xyo-sdk'
 
 (async () => {
   const client = new Client(new ClientConfig({ apiKey: 'YourAPIKeyFromXYO.FinancialDashboard' }))
-
-  console.log("Example test for XYO SDK")
 })()
+```
+
+__Enrich a Single Payment Transaction__:
+```js
+const enrichedTransaction = client.enrichTransaction({
+  content: 'Costa PickUp',
+  countryCode: 'GB',
+})
+
+console.log(enrichedTransaction.merchant)
+console.log(enrichedTransaction.description)
+```
+
+__Enrich Payment Transaction Collection _(Bulk Enrichment)___:
+```js
+const enrichedTransactionCollection = client.enrichTransactionCollection([
+  { 
+    content: 'Costa PickUp',
+    countryCode: 'GB',
+  },
+  {
+    content: 'STRBUKS GREENWICH',
+    countryCode: 'GB',
+  },
+])
+
+console.log(enrichedTransactionCollection.id)
+console.log(enrichedTransactionCollection.link)
+```
+
+__Payment Transaction Collection Status__:
+```js
+const enrichedTransactionCollectionStatus = client.enrichTransactionCollectionStatus(enrichedTransactionCollection.id)
+
+console.log(enrichedTransactionCollectionStatus)
 ```
 
 
