@@ -6,7 +6,7 @@
     <sup><br />Unofficial Node.js Green Sea Turtle Mascot for XYO.Financial Generated and Imagined by Syniol Limited</sup>
 </p>
 
-This SDK is officially maintained by [Syniol Limited](https://syniol.com). It can be utilised for Trial and 
+This SDK is official XYO.Financial and maintained by [Syniol Limited](https://syniol.com). It can be utilised for Trial and 
 Premium accounts, given that a valid API key is available to connect to and access the 
 Enrichment services.
 
