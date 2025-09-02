@@ -3,6 +3,7 @@
 
 <p align="center">
     <a href="https://xyo.financial" target="blank"><img alt="node.js (Turtle) Mascot" width="50%" src="https://github.com/syniol/xyo-sdk-node/blob/main/docs/mascot.png?raw=true" /></a>
+    <sup><br />Unofficial Node.js Green Sea Turtle Mascot for XYO.Financial Generated and Imagined by Syniol Limited</sup>
 </p>
 
 This SDK is officially maintained by [Syniol Limited](https://syniol.com). It can be utilised for Trial and 
@@ -13,12 +14,12 @@ Enrichment services.
 ## Quickstart Guide
 First you need to install the XYO SDK for node.js ecosystem via [npm](https://www.npmjs.com/package/xyo-sdk) or [yarn](https://yarnpkg.com/package/xyo-sdk) package management.
 
-__NPM__:
+__npm__:
 ```shell
 npm i xyo-sdk
 ```
 
-__YARN__:
+__yarn__:
 ```shell
 yarn add xyo-sdk
 ```
