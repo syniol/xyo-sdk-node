@@ -42,7 +42,7 @@ void (async () => {
           > => {
             const mockedHttpRequestResponse = {
               status: HttpStatusCode.OK,
-              text(): string {
+              text() {
                 return JSON.stringify(
                   mockedEnrichmentResponse,
                 )
@@ -84,7 +84,7 @@ void (async () => {
           > => {
             const mockedHttpRequestResponse = {
               status: HttpStatusCode.BAD_REQUEST,
-              text(): string {
+              text() {
                 return 'error with the request'
               },
             } as CarbonHttpResponse<EnrichmentResponse>
@@ -172,7 +172,7 @@ void (async () => {
           > => {
             const mockedHttpRequestResponse = {
               status: HttpStatusCode.OK,
-              text(): string {
+              text() {
                 return JSON.stringify(
                   mockedEnrichmentResponse,
                 )
@@ -216,7 +216,7 @@ void (async () => {
           > => {
             const mockedHttpRequestResponse = {
               status: HttpStatusCode.BAD_REQUEST,
-              text(): string {
+              text() {
                 return 'error with the request'
               },
             } as CarbonHttpResponse<EnrichTransactionCollectionResponse>
@@ -310,7 +310,7 @@ void (async () => {
           > => {
             const mockedHttpRequestResponse = {
               status: HttpStatusCode.OK,
-              text(): string {
+              text() {
                 return JSON.stringify(
                   mockedEnrichmentResponse,
                 )
@@ -357,7 +357,7 @@ void (async () => {
           > => {
             const mockedHttpRequestResponse = {
               status: HttpStatusCode.BAD_REQUEST,
-              text(): string {
+              text() {
                 return 'error with the request'
               },
             } as CarbonHttpResponse<EnrichTransactionCollectionStatusResponse>
