@@ -79,7 +79,7 @@ void (async () => {
               Authorization: `Bearer ${this.options.apiKey}`,
             }
           },
-          httpRequest: (): Promise<
+          httpRequest: <EnrichmentResponse>(): Promise<
             CarbonHttpResponse<EnrichmentResponse>
           > => {
             const mockedHttpRequestResponse = {
@@ -104,7 +104,7 @@ void (async () => {
             content: 'Syniol Software Consultancy',
             countryCode: 'GB',
           })
-        } catch (e) {
+        } catch (e: any) {
           t.assert.equal(
             e.statusCode,
             HttpStatusCode.BAD_REQUEST,
@@ -126,7 +126,7 @@ void (async () => {
               Authorization: `Bearer ${this.options.apiKey}`,
             }
           },
-          httpRequest: (): Promise<
+          httpRequest: <EnrichmentResponse>(): Promise<
             CarbonHttpResponse<EnrichmentResponse>
           > => {
             throw new ClientError('Mocked Error')
@@ -142,7 +142,7 @@ void (async () => {
             content: 'Syniol Software Consultancy',
             countryCode: 'GB',
           })
-        } catch (e) {
+        } catch (e: any) {
           t.assert.equal(e.message, 'Mocked Error')
         }
       })
@@ -165,7 +165,9 @@ void (async () => {
               Authorization: `Bearer ${this.options.apiKey}`,
             }
           },
-          httpRequest: (): Promise<
+          httpRequest: <
+            EnrichTransactionCollectionResponse,
+          >(): Promise<
             CarbonHttpResponse<EnrichTransactionCollectionResponse>
           > => {
             const mockedHttpRequestResponse = {
@@ -175,7 +177,7 @@ void (async () => {
                   mockedEnrichmentResponse,
                 )
               },
-              json(): EnrichTransactionCollectionResponse {
+              json() {
                 return mockedEnrichmentResponse
               },
             } as CarbonHttpResponse<EnrichTransactionCollectionResponse>
@@ -207,7 +209,9 @@ void (async () => {
               Authorization: `Bearer ${this.options.apiKey}`,
             }
           },
-          httpRequest: (): Promise<
+          httpRequest: <
+            EnrichTransactionCollectionResponse,
+          >(): Promise<
             CarbonHttpResponse<EnrichTransactionCollectionResponse>
           > => {
             const mockedHttpRequestResponse = {
@@ -234,7 +238,7 @@ void (async () => {
               countryCode: 'GB',
             },
           ])
-        } catch (e) {
+        } catch (e: any) {
           t.assert.equal(
             e.statusCode,
             HttpStatusCode.BAD_REQUEST,
@@ -256,7 +260,9 @@ void (async () => {
               Authorization: `Bearer ${this.options.apiKey}`,
             }
           },
-          httpRequest: (): Promise<
+          httpRequest: <
+            EnrichTransactionCollectionResponse,
+          >(): Promise<
             CarbonHttpResponse<EnrichTransactionCollectionResponse>
           > => {
             throw new ClientError('Mocked Error')
@@ -274,7 +280,7 @@ void (async () => {
               countryCode: 'GB',
             },
           ])
-        } catch (e) {
+        } catch (e: any) {
           t.assert.equal(e.message, 'Mocked Error')
         }
       })
@@ -297,7 +303,9 @@ void (async () => {
               Authorization: `Bearer ${this.options.apiKey}`,
             }
           },
-          httpRequest: (): Promise<
+          httpRequest: <
+            EnrichTransactionCollectionStatusResponse,
+          >(): Promise<
             CarbonHttpResponse<EnrichTransactionCollectionStatusResponse>
           > => {
             const mockedHttpRequestResponse = {
@@ -307,7 +315,7 @@ void (async () => {
                   mockedEnrichmentResponse,
                 )
               },
-              json(): EnrichTransactionCollectionStatusResponse {
+              json() {
                 return mockedEnrichmentResponse
               },
             } as CarbonHttpResponse<EnrichTransactionCollectionStatusResponse>
@@ -342,7 +350,9 @@ void (async () => {
               Authorization: `Bearer ${this.options.apiKey}`,
             }
           },
-          httpRequest: (): Promise<
+          httpRequest: <
+            EnrichTransactionCollectionStatusResponse,
+          >(): Promise<
             CarbonHttpResponse<EnrichTransactionCollectionStatusResponse>
           > => {
             const mockedHttpRequestResponse = {
@@ -366,7 +376,7 @@ void (async () => {
           await sut.enrichTransactionCollectionStatus(
             '6dd29d66-2326-40bb-b3e9-2b45f2dcf517',
           )
-        } catch (e) {
+        } catch (e: any) {
           t.assert.equal(
             e.statusCode,
             HttpStatusCode.BAD_REQUEST,
@@ -388,7 +398,9 @@ void (async () => {
               Authorization: `Bearer ${this.options.apiKey}`,
             }
           },
-          httpRequest: (): Promise<
+          httpRequest: <
+            EnrichTransactionCollectionStatusResponse,
+          >(): Promise<
             CarbonHttpResponse<EnrichTransactionCollectionStatusResponse>
           > => {
             throw new ClientError('Mocked Error')
@@ -403,7 +415,7 @@ void (async () => {
           await sut.enrichTransactionCollectionStatus(
             '6dd29d66-2326-40bb-b3e9-2b45f2dcf517',
           )
-        } catch (e) {
+        } catch (e: any) {
           t.assert.equal(e.message, 'Mocked Error')
         }
       })
