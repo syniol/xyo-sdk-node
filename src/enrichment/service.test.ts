@@ -24,6 +24,8 @@ void (async () => {
               'Cloud Software and Platform Consultancy',
             categories: ['Cloud', 'Tech'],
             logo: 'base64/png;eyutuidbavdqgfmfnbamdnsdsadasdfc',
+            location: 'London, United Kingdom',
+            address: null,
           }
 
         const mockedClientConfig: ClientConfig = {
@@ -35,7 +37,7 @@ void (async () => {
               Authorization: `Bearer ${this.options.apiKey}`,
             }
           },
-          httpRequest: (): Promise<
+          httpRequest: <EnrichmentResponse>(): Promise<
             CarbonHttpResponse<EnrichmentResponse>
           > => {
             const mockedHttpRequestResponse = {
@@ -45,7 +47,7 @@ void (async () => {
                   mockedEnrichmentResponse,
                 )
               },
-              json(): EnrichmentResponse {
+              json() {
                 return mockedEnrichmentResponse
               },
             } as CarbonHttpResponse<EnrichmentResponse>

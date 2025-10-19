@@ -8,6 +8,8 @@ export interface EnrichmentResponse {
   description: string
   categories: string[]
   logo: string
+  location: string | null
+  address: string | null
 }
 
 export interface EnrichTransactionCollectionResponse {
